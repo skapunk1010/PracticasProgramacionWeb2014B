@@ -1,10 +1,10 @@
 <?php
 	class Validador{
-		private constant REGEXP_EMAIL 		= "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
-		private constant REGEXP_NAME_LAST 	= "/^[a-zA-Z\s]+$/";
-		private constant REGEXP_PHONE	 	= '/^[\d]{8,16}$/';
+		private const REGEXP_EMAIL 		= "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
+		private const REGEXP_NAME_LAST 	= "/^[a-zA-Z\s]+$/";
+		private const REGEXP_PHONE	 	= '/^[\d]{8,16}$/';
 		
-		public function validarEmail($numero){
+		public static function validarEmail($numero){
 			if(preg_match(REGEXP_EMAIL, $email)){
 				return $email;
 			}else{
@@ -12,7 +12,7 @@
 			}
 		}
 
-		public function validarNombreApellido($nombreOapellido){
+		public static function validarNombreApellido($nombreOapellido){
 			if(preg_match(REGEXP_NAME_LAST, $nombreOapellido)){
 				return $nombreOapellido;
 			}else{
@@ -20,7 +20,7 @@
 			}
 		}
 
-		public function validarTelefono($telefono){
+		public static function validarTelefono($telefono){
 			if(preg_match(REGEXP_PHONE, $telefono)){
 				return $telefono;
 			}else{

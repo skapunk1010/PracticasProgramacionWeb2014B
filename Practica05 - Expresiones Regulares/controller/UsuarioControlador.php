@@ -15,11 +15,23 @@ class UsuarioControlador{
 			case 'insertar':
 				$this->insertar();
 				break;
+			case 'consultar':
+				$this->consultar();
+				break;
+			case 'validar':
+				$this->validar();
+				break;
 			default:
 				break;
 			;
 		} // switch
 
+	}
+
+	function validar(){
+		echo "Email: ".$this->modelo->validarEmail($_GET['email']).'<br>';
+		echo "Nombre: ".$this->modelo->validarNombreApellido($_GET['nombre']).'<br>';
+		echo "Telefono: ".$this->modelo->validarTelefono($_GET['telefono']).'<br>';
 	}
 
 	function insertar(){
@@ -29,7 +41,7 @@ class UsuarioControlador{
 		$apellido 	= $validar->validarTexto($_GET['apellido']);
 		$codigo 	= $validar->validarNumero($_GET['codigo']);
 		$telefono 	= $validar->validarNumero($_GET['telefono']);
-		$email		= $Valid
+		//$email		= $Validar
 
 		$resultado = $this->modelo->insertar($nombre,$apellido,$codigo,$telefono);
 
@@ -38,6 +50,13 @@ class UsuarioControlador{
 		} else {
 			require('../views/Error.html');
 		}
+	}
+
+	function consultar(){
+		$codigo		= $_GET['codigo'];
+
+		$resultado = $this->modelo->consultar($codigo);
+		var_dump($resultado);
 	}
 }
 
