@@ -28,35 +28,38 @@ class UsuarioControlador{
 
 	}
 
-	function validar(){
-		echo "Email: ".$this->modelo->validarEmail($_GET['email']).'<br>';
-		echo "Nombre: ".$this->modelo->validarNombreApellido($_GET['nombre']).'<br>';
-		echo "Telefono: ".$this->modelo->validarTelefono($_GET['telefono']).'<br>';
-	}
-
 	function insertar(){
-		require('../controlador.php');
-		$validar 	= new validar();
-		$nombre 	= $validar->validarTexto($_GET['nombre']);
-		$apellido 	= $validar->validarTexto($_GET['apellido']);
-		$codigo 	= $validar->validarNumero($_GET['codigo']);
-		$telefono 	= $validar->validarNumero($_GET['telefono']);
-		//$email		= $Validar
+		require('Validador.php');
 
-		$resultado = $this->modelo->insertar($nombre,$apellido,$codigo,$telefono);
+		$nombre 	= $_GET['nombre'];
+		$apellido 	= $_GET['apellido'];
+		$telefono 	= $_GET['telefono'];
+		$email		= $_GET['email'];
+
+		$nombre 	= (Validador::validarNombreApellido($nombre))? $nombre : die('Nombre contiene mas que letras');
+		$apellido 	= (Validador::validarNombreApellido($apellido))? $apellido : die('Apellido contiene mas que letras');
+		$telefono 	= (Validador::validarTelefono($telefono)) ? $telefono : die('Telefono contiene mas que numeros');
+		$email 		= (Validador::validarEmail($email)) ? $email : die('Formato de email erroneo');
+
+		$resultado = $this->modelo->insertar($nombre,$apellido,$telefono);
 
 		if ($resultado) {
-			require('../views/usuarioInsertado.html');
+			require('view/usuarioInsertado.html');
+
 		} else {
-			require('../views/Error.html');
+			require('view/Error.html');
 		}
 	}
 
 	function consultar(){
 		$codigo		= $_GET['codigo'];
-
-		$resultado = $this->modelo->consultar($codigo);
-		var_dump($resultado);
+		require('Validador.php');
+		if(Validador::validarCodigo($codigo)){
+			$resultado = $this->modelo->consultar($codigo);
+			var_dump($resultado);
+		}else{
+			require('view/Error.html');
+		}
 	}
 }
 

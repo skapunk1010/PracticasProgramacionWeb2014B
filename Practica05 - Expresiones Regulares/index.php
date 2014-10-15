@@ -12,6 +12,6 @@
 			break;
 	} 
 
-$ctrl->run();
+	$ctrl->run();
 
 ?>
