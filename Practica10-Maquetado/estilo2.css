@@ -1,0 +1,48 @@
+body {
+	font-family: "Open Sans", Arial, Sans-serif;
+	color: #fff;
+	margin: 0px;
+}
+
+.container:before,
+.container:after {
+	content: "";
+	display: table;
+}
+
+.container:after {
+	clear: both;
+}
+
+.container {
+	background-color: #777;
+	width: 960px; /* fixed width */
+	margin: 10px auto; /* auto center */
+	/*zoom: 1; 
+	/*non-standard and originally implemented only in Internet Explorer */
+}
+
+.container,
+section,
+aside {
+	border-radius: 6px;
+	text-align: center;
+}
+
+section,
+aside {
+	background-color: #555;
+	margin: 10px; /* fixed */
+	padding: 20px 0px;
+	text-align: center;
+}
+
+section {
+	float: left;
+	width: 60%; /* fixed */
+}
+
+aside {
+	float: right;
+	width: 40%; /* fixed width */
+}
