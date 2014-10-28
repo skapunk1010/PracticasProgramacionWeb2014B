@@ -1,0 +1,43 @@
+table{
+	border-spacing: 3px;
+}
+
+tr td:first-child,thead th{
+	background-color: #6897BB;
+	font-weight: bolder;
+}
+td{
+	text-align: center;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+}
+
+
+.conferencia{
+	background-color: #a35f0c; 
+}
+
+.taller{
+	background-color: #d1edc8;
+}
+
+.tutorial{
+	background-color: #f5821f;
+}
+
+.magistrales{
+	background-color: #5b9d7f;
+}
+
+.intermedios{
+	background-color: #d1d1d1;
+}
+
+.platica{
+	background-color: #c39797;
+}
+.vacio{
+	border:2px dashed #d4d4d4;
+}
